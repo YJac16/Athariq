@@ -330,6 +330,20 @@ body {
   margin-bottom: 0;
 }
 
+.studio-logo-container {
+  text-align: center;
+  margin: var(--spacing-md) 0;
+}
+
+.studio-logo {
+  max-width: 400px;
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  display: block;
+  margin: 0 auto;
+}
+
 /* Responsive Design */
 @media (max-width: 768px) {
   :root {
@@ -419,6 +433,10 @@ body {
     font-size: 1rem;
     line-height: 1.7;
     padding: 0 var(--spacing-xs);
+  }
+
+  .studio-logo {
+    max-width: 300px;
   }
 
   .btn {
