@@ -165,21 +165,41 @@ body {
   text-align: center;
 }
 
-.genre-section {
-  margin-bottom: var(--spacing-xl);
+.genre-selector {
+  display: flex;
+  justify-content: center;
+  gap: var(--spacing-sm);
+  margin-bottom: var(--spacing-lg);
+  flex-wrap: wrap;
 }
 
-.genre-section:last-child {
-  margin-bottom: 0;
-}
-
-.genre-title {
-  font-size: 1.5rem;
-  font-weight: 300;
+.genre-btn {
+  padding: 0.75rem 2rem;
+  background-color: transparent;
+  border: 1px solid var(--accent);
+  color: var(--text-secondary);
+  text-decoration: none;
+  font-size: 0.95rem;
   letter-spacing: 0.1em;
-  margin-bottom: var(--spacing-md);
-  text-transform: capitalize;
+  text-transform: uppercase;
+  transition: all 0.2s ease;
+  cursor: pointer;
+  font-family: inherit;
+}
+
+.genre-btn:hover {
+  border-color: var(--text-primary);
   color: var(--text-primary);
+}
+
+.genre-btn.active {
+  border-color: var(--text-primary);
+  color: var(--text-primary);
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+.genre-content {
+  min-height: 300px;
 }
 
 .games-grid {
@@ -213,6 +233,14 @@ body {
 
 .game-card:hover {
   border-color: rgba(255, 255, 255, 0.1);
+}
+
+.game-series {
+  font-size: 0.85rem;
+  color: var(--accent);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  margin-bottom: var(--spacing-xs);
 }
 
 .game-title {
@@ -318,6 +346,15 @@ body {
     flex-direction: column;
     align-items: flex-start;
     gap: var(--spacing-sm);
+  }
+
+  .genre-selector {
+    gap: var(--spacing-xs);
+  }
+
+  .genre-btn {
+    padding: 0.6rem 1.5rem;
+    font-size: 0.85rem;
   }
 }
 
