@@ -16,8 +16,8 @@ export function renderGames(container) {
       {
         title: 'Whispers Before the Silence: Shadows Over Blackthorn Manor',
         description: 'A mystery where silence speaks louder than words. Uncover the truth hidden in the spaces between. The first case in the Whispers Before the Silence series.',
-        status: 'In Development',
-        playUrl: '#', // Replace with actual game URL when available
+        status: 'Available Now',
+        playUrl: 'https://wbts-shadows-over-blackthorn-manor-production.up.railway.app/',
         series: 'Whispers Before the Silence',
         episode: 'Episode 1',
       },
