@@ -11,6 +11,11 @@ export default defineConfig({
   preview: {
     port: process.env.PORT || 3000,
     host: true,
+    allowedHosts: [
+      'athariq-production.up.railway.app',
+      '.railway.app',
+      '.up.railway.app',
+    ],
   },
 });
 
