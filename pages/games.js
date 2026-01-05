@@ -1,5 +1,5 @@
 /**
- * Games Page - Display available games by genre
+ * Games Page - Display available games by genre with genre selection
  */
 
 export function renderGames(container) {
@@ -8,24 +8,32 @@ export function renderGames(container) {
       {
         title: 'Echoes of the Last Light',
         description: 'A narrative journey through fading memories and lingering echoes. Every decision shapes the path forward.',
-        status: 'In Development',
-        playUrl: '#', // Replace with actual game URL when available
+        status: 'Available Now',
+        playUrl: 'https://echoes-of-the-last-light-production.up.railway.app/',
       },
     ],
     mystery: [
       {
-        title: 'Whispers Before the Silence',
-        description: 'A mystery where silence speaks louder than words. Uncover the truth hidden in the spaces between.',
+        title: 'Whispers Before the Silence: Shadows Over Blackthorn Manor',
+        description: 'A mystery where silence speaks louder than words. Uncover the truth hidden in the spaces between. The first case in the Whispers Before the Silence series.',
         status: 'In Development',
         playUrl: '#', // Replace with actual game URL when available
+        series: 'Whispers Before the Silence',
+        episode: 'Episode 1',
       },
     ],
     islamic: [], // Coming soon
   };
 
+  // Default to first genre
+  let selectedGenre = Object.keys(gamesByGenre)[0];
+
   function renderGameCard(game) {
+    const seriesInfo = game.series ? `<div class="game-series">${game.series} - ${game.episode}</div>` : '';
+    
     return `
       <div class="game-card">
+        ${seriesInfo}
         <h2 class="game-title">${game.title}</h2>
         <p class="game-description">${game.description}</p>
         <div class="game-meta">
@@ -36,17 +44,14 @@ export function renderGames(container) {
     `;
   }
 
-  function renderGenreSection(genreName, games) {
+  function renderGenreContent(genreName, games) {
     const genreTitle = genreName.charAt(0).toUpperCase() + genreName.slice(1);
     
     if (games.length === 0) {
       // Coming soon section for empty genres
       return `
-        <div class="genre-section">
-          <h2 class="genre-title">${genreTitle}</h2>
-          <div class="coming-soon">
-            <p class="coming-soon-text">Coming Soon</p>
-          </div>
+        <div class="coming-soon">
+          <p class="coming-soon-text">Coming Soon</p>
         </div>
       `;
     }
@@ -54,26 +59,51 @@ export function renderGames(container) {
     const gamesHTML = games.map(renderGameCard).join('');
     
     return `
-      <div class="genre-section">
-        <h2 class="genre-title">${genreTitle}</h2>
-        <div class="games-grid">
-          ${gamesHTML}
-        </div>
+      <div class="games-grid">
+        ${gamesHTML}
       </div>
     `;
   }
 
-  const genresHTML = Object.entries(gamesByGenre)
-    .map(([genre, games]) => renderGenreSection(genre, games))
-    .join('');
+  function render() {
+    const genres = Object.keys(gamesByGenre);
+    const genreButtons = genres
+      .map(
+        (genre) => `
+      <button class="genre-btn ${genre === selectedGenre ? 'active' : ''}" data-genre="${genre}">
+        ${genre.charAt(0).toUpperCase() + genre.slice(1)}
+      </button>
+    `
+      )
+      .join('');
 
-  container.innerHTML = `
-    <div class="content">
-      <section class="games-section">
-        <h1 class="section-title">Games</h1>
-        ${genresHTML}
-      </section>
-    </div>
-  `;
+    const selectedGames = gamesByGenre[selectedGenre];
+    const content = renderGenreContent(selectedGenre, selectedGames);
+
+    container.innerHTML = `
+      <div class="content">
+        <section class="games-section">
+          <h1 class="section-title">Games</h1>
+          <div class="genre-selector">
+            ${genreButtons}
+          </div>
+          <div class="genre-content">
+            ${content}
+          </div>
+        </section>
+      </div>
+    `;
+
+    // Add event listeners to genre buttons
+    const genreButtonsEl = container.querySelectorAll('.genre-btn');
+    genreButtonsEl.forEach((btn) => {
+      btn.addEventListener('click', () => {
+        selectedGenre = btn.getAttribute('data-genre');
+        render();
+      });
+    });
+  }
+
+  render();
 }
 
