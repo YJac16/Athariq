@@ -7,6 +7,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
 }
 
 :root {
@@ -21,6 +22,7 @@
   --spacing-lg: 4rem;
   --spacing-xl: 6rem;
   --max-width: 1200px;
+  --touch-target-min: 44px;
 }
 
 body {
@@ -34,6 +36,8 @@ body {
   min-height: 100vh;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+  word-wrap: break-word;
 }
 
 /* Navigation */
@@ -62,10 +66,26 @@ body {
   text-decoration: none;
   color: var(--text-primary);
   transition: opacity 0.2s ease;
+  min-height: var(--touch-target-min);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  -webkit-tap-highlight-color: rgba(255, 255, 255, 0.1);
 }
 
 .nav-logo:hover {
   opacity: 0.7;
+}
+
+.nav-logo-img {
+  height: 2rem;
+  width: auto;
+  object-fit: contain;
+  display: block;
+}
+
+.nav-logo-text {
+  display: inline-block;
 }
 
 .nav-menu {
@@ -81,7 +101,11 @@ body {
   letter-spacing: 0.05em;
   text-transform: uppercase;
   transition: color 0.2s ease;
-  padding: var(--spacing-xs) 0;
+  padding: var(--spacing-xs) var(--spacing-xs);
+  display: inline-flex;
+  min-height: var(--touch-target-min);
+  align-items: center;
+  -webkit-tap-highlight-color: rgba(255, 255, 255, 0.1);
 }
 
 .nav-link:hover,
@@ -129,7 +153,7 @@ body {
 
 /* Buttons */
 .btn {
-  display: inline-block;
+  display: inline-flex;
   padding: 1rem 2.5rem;
   background-color: transparent;
   border: 1px solid var(--accent);
@@ -141,6 +165,10 @@ body {
   transition: all 0.2s ease;
   cursor: pointer;
   font-family: inherit;
+  min-height: var(--touch-target-min);
+  align-items: center;
+  justify-content: center;
+  text-align: center;
 }
 
 .btn:hover {
@@ -185,6 +213,12 @@ body {
   transition: all 0.2s ease;
   cursor: pointer;
   font-family: inherit;
+  min-height: var(--touch-target-min);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  -webkit-tap-highlight-color: rgba(255, 255, 255, 0.1);
 }
 
 .genre-btn:hover {
@@ -306,55 +340,211 @@ body {
 
 /* Responsive Design */
 @media (max-width: 768px) {
+  :root {
+    --spacing-xs: 0.4rem;
+    --spacing-sm: 0.75rem;
+    --spacing-md: 1.25rem;
+    --spacing-lg: 2.5rem;
+    --spacing-xl: 3rem;
+  }
+
+  .nav {
+    padding: var(--spacing-xs) 0;
+  }
+
   .nav-container {
     flex-direction: column;
-    gap: var(--spacing-sm);
-    padding: var(--spacing-sm) var(--spacing-md);
+    gap: var(--spacing-xs);
+    padding: var(--spacing-xs) var(--spacing-sm);
+  }
+
+  .nav-logo {
+    font-size: 1.25rem;
+    padding: var(--spacing-xs) 0;
+    gap: 0.4rem;
+  }
+
+  .nav-logo-img {
+    height: 1.5rem;
   }
 
   .nav-menu {
-    gap: var(--spacing-sm);
+    gap: var(--spacing-xs);
     flex-wrap: wrap;
+    justify-content: center;
+    width: 100%;
+  }
+
+  .nav-link {
+    font-size: 0.85rem;
+    padding: var(--spacing-xs) var(--spacing-xs);
+    flex: 1;
+    min-width: 0;
+    text-align: center;
     justify-content: center;
   }
 
+  .hero {
+    padding: var(--spacing-lg) 0;
+  }
+
   .hero-logo {
-    font-size: 2.5rem;
+    font-size: 2rem;
+    margin-bottom: var(--spacing-sm);
+    line-height: 1.3;
+    word-break: break-word;
   }
 
   .hero-tagline {
-    font-size: 1rem;
+    font-size: 0.95rem;
+    padding: 0 var(--spacing-sm);
+    margin-bottom: var(--spacing-md);
+    line-height: 1.6;
   }
 
   .main {
     padding: var(--spacing-md) var(--spacing-sm);
+    min-height: calc(100vh - 120px);
+  }
+
+  .content {
+    padding: 0;
   }
 
   .page-title {
-    font-size: 2rem;
+    font-size: 1.75rem;
+    margin-bottom: var(--spacing-md);
+    padding: 0 var(--spacing-sm);
   }
 
   .section-title {
     font-size: 1.5rem;
+    margin-bottom: var(--spacing-md);
+    padding: 0 var(--spacing-sm);
+  }
+
+  .page-section {
+    padding: var(--spacing-md) var(--spacing-sm);
+  }
+
+  .page-content {
+    font-size: 1rem;
+    line-height: 1.7;
+    padding: 0 var(--spacing-xs);
+  }
+
+  .btn {
+    padding: 0.875rem 1.75rem;
+    font-size: 0.875rem;
+    width: 100%;
+    max-width: 300px;
+    margin: 0 auto;
+    display: flex;
   }
 
   .game-card {
     padding: var(--spacing-sm);
+    margin: 0;
+  }
+
+  .game-title {
+    font-size: 1.25rem;
+    line-height: 1.4;
+    margin-bottom: var(--spacing-xs);
+    word-break: break-word;
+  }
+
+  .game-series {
+    font-size: 0.75rem;
+    margin-bottom: var(--spacing-xs);
+  }
+
+  .game-description {
+    font-size: 0.9rem;
+    line-height: 1.6;
+    margin-bottom: var(--spacing-sm);
   }
 
   .game-meta {
     flex-direction: column;
     align-items: flex-start;
-    gap: var(--spacing-sm);
+    gap: var(--spacing-xs);
+    margin-bottom: var(--spacing-sm);
+  }
+
+  .game-status {
+    font-size: 0.8rem;
+  }
+
+  .game-play-btn {
+    padding: 0.875rem 1.5rem;
+    font-size: 0.875rem;
+    width: 100%;
+    max-width: none;
   }
 
   .genre-selector {
     gap: var(--spacing-xs);
+    margin-bottom: var(--spacing-md);
+    padding: 0 var(--spacing-xs);
   }
 
   .genre-btn {
-    padding: 0.6rem 1.5rem;
-    font-size: 0.85rem;
+    padding: 0.75rem 1.25rem;
+    font-size: 0.8rem;
+    flex: 1;
+    min-width: 0;
+  }
+
+  .games-grid {
+    gap: var(--spacing-sm);
+    margin-top: var(--spacing-sm);
+  }
+
+  .coming-soon {
+    padding: var(--spacing-lg) var(--spacing-md);
+    margin-top: var(--spacing-sm);
+  }
+
+  .coming-soon-text {
+    font-size: 1rem;
+  }
+
+  .genre-content {
+    min-height: 200px;
+  }
+}
+
+/* Extra small devices */
+@media (max-width: 480px) {
+  .hero-logo {
+    font-size: 1.75rem;
+  }
+
+  .hero-tagline {
+    font-size: 0.9rem;
+  }
+
+  .section-title {
+    font-size: 1.25rem;
+  }
+
+  .page-title {
+    font-size: 1.5rem;
+  }
+
+  .nav-link {
+    font-size: 0.75rem;
+    padding: var(--spacing-xs);
+  }
+
+  .genre-btn {
+    padding: 0.65rem 1rem;
+    font-size: 0.75rem;
+  }
+
+  .game-title {
+    font-size: 1.1rem;
   }
 }
 

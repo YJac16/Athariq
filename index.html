@@ -2,14 +2,27 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
   <title>Āthariq - Interactive Stories</title>
+  
+  <!-- Favicons -->
+  <link rel="icon" type="image/png" sizes="32x32" href="/athariq_favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/athariq_favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/athariq_apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="/athariq_android-chrome-192x192.png">
+  <link rel="icon" type="image/png" sizes="512x512" href="/athariq_android-chrome-512x512.png">
+  
   <link rel="stylesheet" href="/style.css">
 </head>
 <body>
   <nav class="nav">
     <div class="nav-container">
-      <a href="/" class="nav-logo" data-link>Āthariq</a>
+      <a href="/" class="nav-logo" data-link>
+        <img src="/Athariq Logo.png" alt="Āthariq" class="nav-logo-img">
+        <span class="nav-logo-text">Āthariq</span>
+      </a>
       <ul class="nav-menu">
         <li><a href="/" class="nav-link" data-link>Home</a></li>
         <li><a href="/games" class="nav-link" data-link>Games</a></li>
@@ -26,4 +39,5 @@
   <script type="module" src="/main.js"></script>
 </body>
 </html>
+
 
