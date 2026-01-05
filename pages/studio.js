@@ -7,16 +7,16 @@ export function renderStudio(container) {
     <div class="content">
       <section class="page-section">
         <div class="studio-title-logo">
-          <img src="/Nuriya Studios Logo.png" alt="Nuriya Studios" class="studio-title-img">
+          <img src="/Nuriya Studios Logo.png" alt="Nūriya Studios" class="studio-title-img">
         </div>
         <div class="page-content">
           <p>
-            Āthariq is an interactive games label by Nuriya Studios.
+            Āthariq is an interactive games label by Nūriya Studios.
           </p>
         </div>
         <div style="text-align: center; margin-top: 3rem;">
           <a href="https://nuriya-studio-production.up.railway.app/" class="btn btn-primary" target="_blank" rel="noopener noreferrer">
-            Visit Nuriya Studios
+            Visit Nūriya Studios
           </a>
         </div>
       </section>
