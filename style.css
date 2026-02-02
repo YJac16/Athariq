@@ -132,6 +132,15 @@ body {
   display: block;
 }
 
+.hero-slogan {
+  font-size: 1.25rem;
+  font-weight: 300;
+  letter-spacing: 0.15em;
+  color: var(--text-primary);
+  margin-bottom: var(--spacing-sm);
+  text-transform: uppercase;
+}
+
 .hero-tagline {
   font-size: 1.1rem;
   color: var(--text-secondary);
@@ -420,6 +429,11 @@ body {
     margin-bottom: var(--spacing-sm);
   }
 
+  .hero-slogan {
+    font-size: 1rem;
+    letter-spacing: 0.1em;
+  }
+
   .hero-tagline {
     font-size: 0.95rem;
     padding: 0 var(--spacing-sm);
@@ -557,6 +571,11 @@ body {
 @media (max-width: 480px) {
   .hero-logo-img {
     max-width: 85%;
+  }
+
+  .hero-slogan {
+    font-size: 0.9rem;
+    letter-spacing: 0.08em;
   }
 
   .hero-tagline {

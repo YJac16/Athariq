@@ -14,7 +14,7 @@ export function renderAbout(container) {
           </p>
           <p>
             Our name, <strong>Athariq</strong>, comes from the Arabic word <strong>Ṭarīq</strong>,
-            meaning <em>path</em> or <em>journey</em>. It’s a reminder that what matters isn’t only
+            meaning <em>path</em> or <em>journey</em>. It's a reminder that what matters isn't only
             where a story ends, but how it feels to walk through it.
           </p>
           <p>
@@ -23,7 +23,6 @@ export function renderAbout(container) {
             quietly reshape the road ahead.
           </p>
           <p>
-            Our slogan is simple: <strong>“The Journey Is the Game.”</strong>
             We hope each title becomes a path worth taking—one you remember, and one that leaves
             a trace.
           </p>
@@ -32,7 +31,3 @@ export function renderAbout(container) {
     </div>
   `;
 }
-
-
-
-

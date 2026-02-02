@@ -7,6 +7,7 @@ export function renderHome(container) {
     <div class="content">
       <section class="hero">
         <img src="/Athariq Logo.png" alt="Āthariq" class="hero-logo-img">
+        <p class="hero-slogan">The Journey Is the Game.</p>
         <p class="hero-tagline">
           Interactive stories where every choice leaves a trace.
         </p>
