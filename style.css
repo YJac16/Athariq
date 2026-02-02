@@ -261,6 +261,15 @@ body {
   border-color: rgba(255, 255, 255, 0.1);
 }
 
+.game-title-image {
+  width: 100%;
+  max-height: 200px;
+  object-fit: contain;
+  object-position: top;
+  margin-bottom: var(--spacing-sm);
+  display: block;
+}
+
 .game-series {
   font-size: 0.85rem;
   color: var(--accent);
@@ -469,6 +478,11 @@ body {
   .game-card {
     padding: var(--spacing-sm);
     margin: 0;
+  }
+
+  .game-title-image {
+    max-height: 160px;
+    margin-bottom: var(--spacing-xs);
   }
 
   .game-title {

@@ -7,6 +7,7 @@ export function renderGames(container) {
     story: [
       {
         title: 'Echoes of the Last Light',
+        titleImage: '/Echoes of the Last Light Title.jpg',
         description: 'A narrative journey through fading memories and lingering echoes. Every decision shapes the path forward.',
         status: 'Available Now',
         playUrl: 'https://echoes-of-the-last-light-production.up.railway.app/',
@@ -15,6 +16,7 @@ export function renderGames(container) {
     mystery: [
       {
         title: 'Whispers Before the Silence: Shadows Over Blackthorn Manor',
+        titleImage: '/Shadows Over Blackthorn Manor Title.jpg',
         description: 'A mystery where silence speaks louder than words. Uncover the truth hidden in the spaces between. The first case in the Whispers Before the Silence series.',
         status: 'Available Now',
         playUrl: 'https://wbts-shadows-over-blackthorn-manor-production.up.railway.app/',
@@ -30,9 +32,13 @@ export function renderGames(container) {
 
   function renderGameCard(game) {
     const seriesInfo = game.series ? `<div class="game-series">${game.series} - ${game.episode}</div>` : '';
+    const titleImage = game.titleImage
+      ? `<img src="${game.titleImage}" alt="${game.title}" class="game-title-image">`
+      : '';
     
     return `
       <div class="game-card">
+        ${titleImage}
         ${seriesInfo}
         <h2 class="game-title">${game.title}</h2>
         <p class="game-description">${game.description}</p>
