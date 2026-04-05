@@ -24,7 +24,15 @@ export function renderGames(container) {
         episode: 'Episode 1',
       },
     ],
-    islamic: [], // Coming soon
+    islamic: [
+      {
+        title: 'The Path You Choose',
+        description:
+          'Learn Islam through choices, reflection, and discovery — a calm, respectful journey for new Muslims, lifelong learners, and curious explorers.',
+        status: 'Available Now',
+        playUrl: 'https://the-path-you-choose.vercel.app/',
+      },
+    ],
   };
 
   // Default to first genre
