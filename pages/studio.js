@@ -8,11 +8,11 @@ export function renderStudio(container) {
       <section class="studio-page" aria-label="Nūriya Studios">
         <div class="studio-mark">
           <img
-            src="/Nuriya Studios Logo.png"
+            src="/nuriya-logo-and-name-no-background.png"
             alt="Nūriya Studios"
             class="studio-title-img"
-            width="520"
-            height="520"
+            width="564"
+            height="468"
           >
         </div>
         <p class="studio-lead">

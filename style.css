@@ -111,11 +111,12 @@ body.theme-studio {
 }
 
 .nav-logo-img {
-  height: 2.25rem;
+  height: 2.35rem;
   width: auto;
   object-fit: contain;
   display: block;
-  border-radius: 0.35rem;
+  /* Dark charcoal asset → white on Āthariq dark chrome */
+  filter: brightness(0) invert(1);
 }
 
 .nav-toggle {
@@ -227,12 +228,13 @@ body.nav-open .nav-toggle-bar:last-child {
 .hero-logo-img {
   position: relative;
   z-index: 1;
-  width: min(100%, 18rem);
+  width: min(100%, 22rem);
   height: auto;
   object-fit: contain;
-  margin: 0 auto 1.35rem;
+  margin: 0 auto 1.5rem;
   display: block;
-  mix-blend-mode: lighten;
+  /* Transparent charcoal wordmark → luminous on dark hero */
+  filter: brightness(0) invert(1);
   animation: fade-rise 0.9s var(--ease-out) both;
 }
 
@@ -562,7 +564,7 @@ body.theme-studio .game-art-placeholder {
 }
 
 .studio-mark {
-  width: min(100%, 28rem);
+  width: min(100%, 22rem);
   margin-bottom: 1.75rem;
 }
 
@@ -571,6 +573,13 @@ body.theme-studio .game-art-placeholder {
   height: auto;
   object-fit: contain;
   display: block;
+  /* Charcoal mark on cream — keep natural colors */
+  filter: none;
+}
+
+/* Nav mark stays dark on cream studio theme */
+body.theme-studio .nav-logo-img {
+  filter: none;
 }
 
 .studio-lead {
@@ -666,8 +675,8 @@ body.theme-studio .game-art-placeholder {
   }
 
   .hero-logo-img {
-    width: min(100%, 18rem);
-    margin-bottom: 1.35rem;
+    width: min(100%, 16.5rem);
+    margin-bottom: 1.25rem;
   }
 
   .btn {

@@ -8,11 +8,11 @@ export function renderHome(container) {
       <section class="hero" aria-label="Āthariq">
         <div class="hero-glow" aria-hidden="true"></div>
         <img
-          src="/Athariq Logo.png"
+          src="/athariq-logo-no-background.png"
           alt="Āthariq"
           class="hero-logo-img"
-          width="400"
-          height="400"
+          width="708"
+          height="195"
         >
         <p class="hero-slogan">The Journey Is the Game.</p>
         <p class="hero-tagline">
