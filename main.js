@@ -8,8 +8,9 @@ import { renderAbout } from './pages/about.js';
 import { renderStudio } from './pages/studio.js';
 
 const app = document.getElementById('app');
+const navToggle = document.querySelector('.nav-toggle');
+const navMenu = document.getElementById('nav-menu');
 
-// Route configuration
 const routes = {
   '/': renderHome,
   '/games': renderGames,
@@ -17,68 +18,53 @@ const routes = {
   '/studio': renderStudio,
 };
 
-/**
- * Get current route from URL
- */
 function getCurrentRoute() {
   return window.location.pathname;
 }
 
-/**
- * Render the appropriate page based on route
- */
+function closeNav() {
+  document.body.classList.remove('nav-open');
+  if (navToggle) navToggle.setAttribute('aria-expanded', 'false');
+}
+
 function renderPage() {
   const route = getCurrentRoute();
   const renderFunction = routes[route] || renderHome;
-  
+
+  document.body.classList.toggle('theme-studio', route === '/studio');
+  closeNav();
+
   app.innerHTML = '';
   renderFunction(app);
-  
-  // Update active nav link
   updateActiveNavLink(route);
+  window.scrollTo(0, 0);
 }
 
-/**
- * Update active navigation link
- */
 function updateActiveNavLink(route) {
-  const navLinks = document.querySelectorAll('.nav-link');
-  navLinks.forEach(link => {
+  document.querySelectorAll('.nav-link').forEach((link) => {
     const href = link.getAttribute('href');
-    if (href === route || (route === '/' && href === '/')) {
-      link.classList.add('active');
-    } else {
-      link.classList.remove('active');
-    }
+    link.classList.toggle('active', href === route);
   });
 }
 
-/**
- * Handle navigation clicks
- */
 function handleNavigation(e) {
   const link = e.target.closest('[data-link]');
   if (!link) return;
-  
+
   e.preventDefault();
   const href = link.getAttribute('href');
-  
-  // Update URL without page reload
   window.history.pushState({}, '', href);
   renderPage();
 }
 
-/**
- * Handle browser back/forward buttons
- */
-function handlePopState() {
-  renderPage();
+if (navToggle && navMenu) {
+  navToggle.addEventListener('click', () => {
+    const open = document.body.classList.toggle('nav-open');
+    navToggle.setAttribute('aria-expanded', String(open));
+  });
 }
 
-// Event listeners
 document.addEventListener('click', handleNavigation);
-window.addEventListener('popstate', handlePopState);
+window.addEventListener('popstate', renderPage);
 
-// Initial render
 renderPage();
-

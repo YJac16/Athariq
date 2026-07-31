@@ -8,7 +8,8 @@ export function renderGames(container) {
       {
         title: 'Echoes of the Last Light',
         titleImage: '/Echoes of the Last Light Title.jpg',
-        description: 'A narrative journey through fading memories and lingering echoes. Every decision shapes the path forward.',
+        description:
+          'A narrative journey through fading memories and lingering echoes. Every decision shapes the path forward.',
         status: 'Available Now',
         playUrl: 'https://echoes-of-the-last-light-production.up.railway.app/',
       },
@@ -17,7 +18,8 @@ export function renderGames(container) {
       {
         title: 'Whispers Before the Silence: Shadows Over Blackthorn Manor',
         titleImage: '/Shadows Over Blackthorn Manor Title.jpg',
-        description: 'A mystery where silence speaks louder than words. Uncover the truth hidden in the spaces between. The first case in the Whispers Before the Silence series.',
+        description:
+          'A mystery where silence speaks louder than words. Uncover the truth hidden in the spaces between. The first case in the Whispers Before the Silence series.',
         status: 'Available Now',
         playUrl: 'https://wbts-shadows-over-blackthorn-manor-production.up.railway.app/',
         series: 'Whispers Before the Silence',
@@ -31,38 +33,39 @@ export function renderGames(container) {
           'Learn Islam through choices, reflection, and discovery — a calm, respectful journey for new Muslims, lifelong learners, and curious explorers.',
         status: 'Available Now',
         playUrl: 'https://the-path-you-choose.vercel.app/',
+        placeholder: true,
       },
     ],
   };
 
-  // Default to first genre
   let selectedGenre = Object.keys(gamesByGenre)[0];
 
   function renderGameCard(game) {
-    const seriesInfo = game.series ? `<div class="game-series">${game.series} - ${game.episode}</div>` : '';
-    const titleImage = game.titleImage
-      ? `<img src="${game.titleImage}" alt="${game.title}" class="game-title-image">`
+    const seriesInfo = game.series
+      ? `<div class="game-series">${game.series} · ${game.episode}</div>`
       : '';
-    
+    const media = game.titleImage
+      ? `<img src="${game.titleImage}" alt="" class="game-title-image" loading="lazy">`
+      : `<div class="game-art-placeholder" aria-hidden="true"><span>${game.title}</span></div>`;
+
     return `
-      <div class="game-card">
-        ${titleImage}
-        ${seriesInfo}
-        <h2 class="game-title">${game.title}</h2>
-        <p class="game-description">${game.description}</p>
-        <div class="game-meta">
-          <span class="game-status">${game.status}</span>
+      <article class="game-card">
+        <div class="game-media">${media}</div>
+        <div class="game-body">
+          ${seriesInfo}
+          <h2 class="game-title">${game.title}</h2>
+          <p class="game-description">${game.description}</p>
+          <div class="game-meta">
+            <span class="game-status">${game.status}</span>
+            <a href="${game.playUrl}" class="btn btn-primary game-play-btn" target="_blank" rel="noopener noreferrer">Play</a>
+          </div>
         </div>
-        <a href="${game.playUrl}" class="btn game-play-btn" target="_blank" rel="noopener noreferrer">Play</a>
-      </div>
+      </article>
     `;
   }
 
-  function renderGenreContent(genreName, games) {
-    const genreTitle = genreName.charAt(0).toUpperCase() + genreName.slice(1);
-    
+  function renderGenreContent(games) {
     if (games.length === 0) {
-      // Coming soon section for empty genres
       return `
         <div class="coming-soon">
           <p class="coming-soon-text">Coming Soon</p>
@@ -70,13 +73,7 @@ export function renderGames(container) {
       `;
     }
 
-    const gamesHTML = games.map(renderGameCard).join('');
-    
-    return `
-      <div class="games-grid">
-        ${gamesHTML}
-      </div>
-    `;
+    return `<div class="games-grid">${games.map(renderGameCard).join('')}</div>`;
   }
 
   function render() {
@@ -84,33 +81,28 @@ export function renderGames(container) {
     const genreButtons = genres
       .map(
         (genre) => `
-      <button class="genre-btn ${genre === selectedGenre ? 'active' : ''}" data-genre="${genre}">
+      <button type="button" class="genre-btn ${genre === selectedGenre ? 'active' : ''}" data-genre="${genre}">
         ${genre.charAt(0).toUpperCase() + genre.slice(1)}
       </button>
     `
       )
       .join('');
 
-    const selectedGames = gamesByGenre[selectedGenre];
-    const content = renderGenreContent(selectedGenre, selectedGames);
-
     container.innerHTML = `
       <div class="content">
         <section class="games-section">
           <h1 class="section-title">Games</h1>
-          <div class="genre-selector">
+          <div class="genre-selector" role="tablist" aria-label="Game genres">
             ${genreButtons}
           </div>
           <div class="genre-content">
-            ${content}
+            ${renderGenreContent(gamesByGenre[selectedGenre])}
           </div>
         </section>
       </div>
     `;
 
-    // Add event listeners to genre buttons
-    const genreButtonsEl = container.querySelectorAll('.genre-btn');
-    genreButtonsEl.forEach((btn) => {
+    container.querySelectorAll('.genre-btn').forEach((btn) => {
       btn.addEventListener('click', () => {
         selectedGenre = btn.getAttribute('data-genre');
         render();
@@ -120,4 +112,3 @@ export function renderGames(container) {
 
   render();
 }
-

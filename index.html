@@ -5,24 +5,32 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
   <meta name="mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="description" content="Āthariq — interactive stories where every choice leaves a trace.">
   <title>Āthariq - Interactive Stories</title>
-  
+
   <!-- Favicons -->
   <link rel="icon" type="image/png" sizes="32x32" href="/athariq_favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/athariq_favicon-16x16.png">
   <link rel="apple-touch-icon" sizes="180x180" href="/athariq_apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="192x192" href="/athariq_android-chrome-192x192.png">
   <link rel="icon" type="image/png" sizes="512x512" href="/athariq_android-chrome-512x512.png">
-  
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600&family=Syne:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/style.css">
 </head>
 <body>
-  <nav class="nav">
+  <nav class="nav" aria-label="Primary">
     <div class="nav-container">
-      <a href="/" class="nav-logo" data-link>
-        <img src="/Athariq Logo Vector.png" alt="Āthariq" class="nav-logo-img">
+      <a href="/" class="nav-logo" data-link aria-label="Āthariq home">
+        <img src="/Athariq Logo Vector.png" alt="" class="nav-logo-img" width="40" height="40">
       </a>
-      <ul class="nav-menu">
+      <button type="button" class="nav-toggle" aria-expanded="false" aria-controls="nav-menu" aria-label="Menu">
+        <span class="nav-toggle-bar"></span>
+        <span class="nav-toggle-bar"></span>
+      </button>
+      <ul class="nav-menu" id="nav-menu">
         <li><a href="/" class="nav-link" data-link>Home</a></li>
         <li><a href="/games" class="nav-link" data-link>Games</a></li>
         <li><a href="/about" class="nav-link" data-link>About</a></li>
@@ -32,11 +40,15 @@
   </nav>
 
   <main id="app" class="main">
-    <!-- Content will be rendered here by JavaScript -->
+    <!-- Content rendered by JavaScript -->
   </main>
+
+  <footer class="site-footer">
+    <p class="site-footer-text">
+      Āthariq · a <a href="/studio" data-link>Nūriya</a> label
+    </p>
+  </footer>
 
   <script type="module" src="/main.js"></script>
 </body>
 </html>
-
-
