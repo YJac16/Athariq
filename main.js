@@ -6,6 +6,7 @@ import { renderHome } from './pages/home.js';
 import { renderGames } from './pages/games.js';
 import { renderAbout } from './pages/about.js';
 import { renderStudio } from './pages/studio.js';
+import { renderNotFound } from './pages/not-found.js';
 
 const app = document.getElementById('app');
 const navToggle = document.querySelector('.nav-toggle');
@@ -29,13 +30,17 @@ function closeNav() {
 
 function renderPage() {
   const route = getCurrentRoute();
-  const renderFunction = routes[route] || renderHome;
+  const renderFunction = routes[route];
 
   document.body.classList.toggle('theme-studio', route === '/studio');
   closeNav();
 
   app.innerHTML = '';
-  renderFunction(app);
+  if (renderFunction) {
+    renderFunction(app);
+  } else {
+    renderNotFound(app);
+  }
   updateActiveNavLink(route);
   window.scrollTo(0, 0);
 }

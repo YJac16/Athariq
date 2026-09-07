@@ -327,6 +327,87 @@ body.nav-open .nav-toggle-bar:last-child {
   border-color: var(--text-primary);
 }
 
+/* 404 */
+.not-found {
+  position: relative;
+  text-align: center;
+  padding: clamp(2rem, 8vh, 5rem) 0 clamp(3rem, 10vh, 6rem);
+  max-width: 32rem;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: calc(100svh - var(--nav-height) - 5.5rem);
+  justify-content: center;
+}
+
+.not-found-glow {
+  position: absolute;
+  inset: 15% 0 auto;
+  height: 50%;
+  background: radial-gradient(ellipse at center, var(--glow), transparent 70%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.not-found-logo {
+  position: relative;
+  z-index: 1;
+  height: 3rem;
+  width: auto;
+  object-fit: contain;
+  margin-bottom: 2rem;
+  filter: brightness(0) invert(1);
+  opacity: 0.85;
+  animation: fade-rise 0.9s var(--ease-out) both;
+}
+
+.not-found-code {
+  position: relative;
+  z-index: 1;
+  font-family: var(--font-display);
+  font-size: clamp(3.5rem, 12vw, 5rem);
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  color: var(--text-primary);
+  opacity: 0.12;
+  line-height: 1;
+  margin-bottom: -0.5rem;
+  animation: fade-rise 0.9s var(--ease-out) 0.05s both;
+}
+
+.not-found-title {
+  position: relative;
+  z-index: 1;
+  font-family: var(--font-display);
+  font-size: clamp(1.25rem, 3.5vw, 1.65rem);
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-primary);
+  margin-bottom: 1rem;
+  animation: fade-rise 0.9s var(--ease-out) 0.12s both;
+}
+
+.not-found-message {
+  position: relative;
+  z-index: 1;
+  font-size: clamp(0.95rem, 2.2vw, 1.05rem);
+  font-weight: 300;
+  color: var(--text-secondary);
+  letter-spacing: 0.02em;
+  line-height: 1.7;
+  max-width: 22rem;
+  margin-bottom: 2.5rem;
+  animation: fade-rise 0.9s var(--ease-out) 0.22s both;
+}
+
+.not-found .btn {
+  position: relative;
+  z-index: 1;
+  animation: fade-rise 0.9s var(--ease-out) 0.32s both;
+}
+
 /* Games */
 .games-section {
   padding: var(--spacing-sm) 0 var(--spacing-lg);
