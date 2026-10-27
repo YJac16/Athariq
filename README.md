@@ -18,14 +18,9 @@ npm run build
 npm run preview
 ```
 
-## Railway Deployment
+## Deployment
 
-The site is configured for Railway deployment:
-
-- **Build Command**: `npm run build`
-- **Start Command**: `npm run preview`
-
-The preview server automatically uses the `PORT` environment variable provided by Railway and binds to all interfaces with `--host`.
+The production site is a static Vite build on Vercel. `vercel.json` rewrites client routes to `index.html` so direct visits to `/games`, `/about`, and `/studio` load the app. Files that exist in the build, including `/assets` and images, are served as themselves.
 
 ## Project Structure
 
@@ -40,7 +35,7 @@ The preview server automatically uses the `PORT` environment variable provided b
 │   └── studio.js
 ├── package.json
 ├── vite.config.js
-└── railway.json        # Railway deployment config
+└── vercel.json         # SPA rewrites for client routes
 ```
 
 ## Design Principles
