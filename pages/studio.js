@@ -19,7 +19,7 @@ export function renderStudio(container) {
           Āthariq is an interactive games label by Nūriya Studios.
         </p>
         <a
-          href="https://nuriya-studio-production.up.railway.app/"
+          href="https://nuriyastudios.com"
           class="btn btn-primary studio-cta"
           target="_blank"
           rel="noopener noreferrer"
