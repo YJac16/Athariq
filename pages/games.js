@@ -11,7 +11,7 @@ export function renderGames(container) {
         description:
           'A narrative journey through fading memories and lingering echoes. Every decision shapes the path forward.',
         status: 'Available Now',
-        playUrl: 'https://echoes-of-the-last-light-production.up.railway.app/',
+        playUrl: 'https://echoes-of-the-last-light.vercel.app',
       },
     ],
     mystery: [
@@ -21,7 +21,7 @@ export function renderGames(container) {
         description:
           'A mystery where silence speaks louder than words. Uncover the truth hidden in the spaces between. The first case in the Whispers Before the Silence series.',
         status: 'Available Now',
-        playUrl: 'https://wbts-shadows-over-blackthorn-manor-production.up.railway.app/',
+        playUrl: 'https://shadows-over-blackthorn-manor.vercel.app',
         series: 'Whispers Before the Silence',
         episode: 'Episode 1',
       },

@@ -14,9 +14,6 @@ export default defineConfig({
     allowedHosts: [
       'www.athariqgames.com',
       'athariqgames.com',
-      'athariq-production.up.railway.app',
-      '.railway.app',
-      '.up.railway.app',
     ],
   },
 });
